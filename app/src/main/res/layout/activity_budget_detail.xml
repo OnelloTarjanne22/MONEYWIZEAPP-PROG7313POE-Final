@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#e9ecef">
 
-    <!-- 🔙 Back button top-left -->
     <Button
         android:id="@+id/button7"
         android:layout_width="68dp"
@@ -15,7 +14,6 @@
         android:text="Back"
         android:textSize="8sp" />
 
-    <!-- Main content centered -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,24 +30,70 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!-- Min Spend Goal Label -->
+        <TextView
+            android:id="@+id/tvMinGoalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minimum Spend Goal"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarMinGoal"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#4CAF50" />
+
+        <!-- Max Spend Limit Label -->
+        <TextView
+            android:id="@+id/tvMaxLimitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maximum Spend Limit"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarMaxSpend"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#FF5722" />
+
+        <!-- Overall Progress Label -->
         <TextView
             android:id="@+id/tvProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Progress"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Overall Progress"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
+        <!-- Existing progress bar in RelativeLayout with markers -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:max="100"
-            android:progress="0"
-            android:progressTint="#9C27B0" />
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="#9C27B0" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tvPercentage"
@@ -63,10 +107,18 @@
             android:id="@+id/maxspendTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="Spend Limit: "
             android:textSize="16sp" />
-        <TextView android:id="@+id/tvTransactionsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Transactions" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="16dp" android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTransactionsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transactions"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
 
         <ListView
             android:id="@+id/transactionsListView"
@@ -77,7 +129,6 @@
             android:padding="8dp" />
     </LinearLayout>
 
-    <!-- Konfetti animation view -->
     <nl.dionsegijn.konfetti.xml.KonfettiView
         android:id="@+id/konfettiView"
         android:layout_width="match_parent"

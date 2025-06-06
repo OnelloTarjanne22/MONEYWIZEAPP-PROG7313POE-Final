@@ -2,6 +2,7 @@ package com.example.moneywizev1
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
@@ -20,6 +21,11 @@ class BudgetDetailActivity : AppCompatActivity() {
     private var celebrationDone = false
     private lateinit var budgetName: String
     private lateinit var listView: ListView
+    private lateinit var progressBarMinGoal: ProgressBar
+    private lateinit var progressBarMaxSpend: ProgressBar
+
+    private lateinit var tvMinGoalLabel: TextView
+    private lateinit var tvMaxLimitLabel: TextView
 
     private lateinit var tvProgress: TextView
     private lateinit var progressBar: ProgressBar
@@ -30,7 +36,10 @@ class BudgetDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget_detail)
-
+        progressBarMinGoal = findViewById(R.id.progressBarMinGoal)
+        progressBarMaxSpend = findViewById(R.id.progressBarMaxSpend)
+        tvMinGoalLabel = findViewById(R.id.tvMinGoalLabel)
+        tvMaxLimitLabel = findViewById(R.id.tvMaxLimitLabel)
         tvProgress = findViewById(R.id.tvProgress)
         progressBar = findViewById(R.id.progressBar)
         tvPercentage = findViewById(R.id.tvPercentage)
@@ -44,6 +53,13 @@ class BudgetDetailActivity : AppCompatActivity() {
         goal = intent.getIntExtra("budgetAmount", 100)
 
         fetchBudgetData(budgetName)
+    }
+    private fun updateSpendProgress(capital: Int, monthlyGoal: Int, maxSpend: Double) {
+        val minGoalPercentage = if (monthlyGoal > 0) (capital.toFloat() / monthlyGoal * 100).toInt() else 0
+        val maxSpendPercentage = if (maxSpend > 0) (capital.toFloat() / maxSpend * 100).toInt() else 0
+
+        progressBarMinGoal.progress = minGoalPercentage.coerceAtMost(100)
+        progressBarMaxSpend.progress = maxSpendPercentage.coerceAtMost(100)
     }
 
     private fun fetchBudgetData(budgetName: String) {
@@ -73,6 +89,12 @@ class BudgetDetailActivity : AppCompatActivity() {
                     }
 
                     currentCount = (capital + income) - expenses
+                    updateSpendProgress(currentCount, monthlyGoal, maxspend)
+                    val minGoalReachedText = if (currentCount >= monthlyGoal) " (Reached)" else ""
+                    tvMinGoalLabel.text = "Min Goal: R$monthlyGoal$minGoalReachedText"
+
+                    val maxLimitReachedText = if (currentCount >= maxspend) " (Reached)" else ""
+                    tvMaxLimitLabel.text = "Max Limit: R${String.format("%.2f", maxspend)}$maxLimitReachedText"
 
                     maxspendTextView.text =
                         "Spending limit: R${String.format("%.2f", maxspend)} | Budget Goal: R$amount | Monthly Goal: R$monthlyGoal"
@@ -109,7 +131,7 @@ class BudgetDetailActivity : AppCompatActivity() {
 
         Log.d("BudgetDetail", "currentCount: $currentCount, goal: $goal, percentage: $percentage")
 
-        tvProgress.text = "$budgetName Progress: R$currentCount / R$goal"
+        tvProgress.text = "$budgetName savings Progress: $currentCount / R$goal"
         progressBar.max = goal
         progressBar.progress = currentCount.coerceAtMost(goal)
         tvPercentage.text = "$percentage% Complete"
