@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "930295782520",
+    "project_id": "moneywize-8bc2c",
+    "storage_bucket": "moneywize-8bc2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930295782520:android:00648defd14e95b379a18d",
+        "android_client_info": {
+          "package_name": "com.example.moneywizev1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVi3ETTRCTgytykglegs1MyQzkW2vUydc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

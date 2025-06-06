@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9ecef">
+
+    <!-- 🔙 Back button top-left -->
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="68dp"
+        android:layout_height="46dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:backgroundTint="#353030"
+        android:text="Back"
+        android:textSize="8sp" />
+
+    <!-- Main content centered -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Budget Details"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Progress"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#9C27B0" />
+
+        <TextView
+            android:id="@+id/tvPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="0% Complete"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/maxspendTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Spend Limit: "
+            android:textSize="16sp" />
+        <TextView android:id="@+id/tvTransactionsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Transactions" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="16dp" android:layout_marginBottom="8dp"/>
+
+        <ListView
+            android:id="@+id/transactionsListView"
+            android:layout_width="255dp"
+            android:layout_height="195dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <!-- Konfetti animation view -->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>
+
