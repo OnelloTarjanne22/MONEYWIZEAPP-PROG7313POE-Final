@@ -54,9 +54,10 @@ class BudgetDetailActivity : AppCompatActivity() {
 
         fetchBudgetData(budgetName)
     }
-    private fun updateSpendProgress(capital: Int, monthlyGoal: Int, maxSpend: Double) {
-        val minGoalPercentage = if (monthlyGoal > 0) (capital.toFloat() / monthlyGoal * 100).toInt() else 0
-        val maxSpendPercentage = if (maxSpend > 0) (capital.toFloat() / maxSpend * 100).toInt() else 0
+    private fun updateSpendProgress(totalExpenses: Int, monthlyGoal: Int, maxSpend: Double) {
+        // Calculate percentage of expenses against monthly goal and max spend limit
+        val minGoalPercentage = if (monthlyGoal > 0) (totalExpenses.toFloat() / monthlyGoal * 100).toInt() else 0
+        val maxSpendPercentage = if (maxSpend > 0) (totalExpenses.toFloat() / maxSpend * 100).toInt() else 0
 
         progressBarMinGoal.progress = minGoalPercentage.coerceAtMost(100)
         progressBarMaxSpend.progress = maxSpendPercentage.coerceAtMost(100)
@@ -75,25 +76,26 @@ class BudgetDetailActivity : AppCompatActivity() {
                 val maxspend = budget?.maxspend ?: 0.0
 
                 goal = amount
+                // Use capital directly for savings progress
+                currentCount = capital
 
                 fetchTransactions(budgetName) { transactions ->
-                    var income = 0
-                    var expenses = 0
+                    // Calculate total expenses for min goal and max limit tracking
+                    var totalExpenses = 0
 
                     for (t in transactions) {
-                        if (t.type == "Income") {
-                            income += t.amount.toInt()
-                        } else if (t.type == "Expense") {
-                            expenses += t.amount.toInt()
+                        if (t.type == "Expense") {
+                            totalExpenses += t.amount.toInt()
                         }
                     }
 
-                    currentCount = (capital + income) - expenses
-                    updateSpendProgress(currentCount, monthlyGoal, maxspend)
-                    val minGoalReachedText = if (currentCount >= monthlyGoal) " (Reached)" else ""
+                    // Update expense progress bars (min goal and max limit track expenses)
+                    updateSpendProgress(totalExpenses, monthlyGoal, maxspend)
+
+                    val minGoalReachedText = if (totalExpenses >= monthlyGoal) " (Reached)" else ""
                     tvMinGoalLabel.text = "Min Goal: R$monthlyGoal$minGoalReachedText"
 
-                    val maxLimitReachedText = if (currentCount >= maxspend) " (Reached)" else ""
+                    val maxLimitReachedText = if (totalExpenses >= maxspend) " (Reached)" else ""
                     tvMaxLimitLabel.text = "Max Limit: R${String.format("%.2f", maxspend)}$maxLimitReachedText"
 
                     maxspendTextView.text =

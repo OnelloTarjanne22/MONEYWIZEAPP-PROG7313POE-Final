@@ -153,9 +153,9 @@ class IncomePage : AppCompatActivity() {
     ) {
         budgetsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                // Save transaction and update capital for each selected budget
+                // Save transaction and update capital for each selected budget in single Firebase call
                 for (selectedBudget in selectedBudgetsList) {
+                    // Save transaction
                     val transactionId = transactionsRef.child(selectedBudget).push().key ?: continue
 
                     val transactionData = mapOf(
@@ -171,6 +171,7 @@ class IncomePage : AppCompatActivity() {
 
                     transactionsRef.child(selectedBudget).child(transactionId).setValue(transactionData)
 
+                    // Update capital immediately in the same Firebase call
                     val budgetSnap = snapshot.children.find { it.child("name").value == selectedBudget }
                     if (budgetSnap != null) {
                         val capital = budgetSnap.child("capital").getValue(Double::class.java) ?: 0.0

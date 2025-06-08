@@ -156,6 +156,7 @@ class ExpensePage : AppCompatActivity() {
     ) {
         budgetsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                // First validate all budgets
                 for (selectedBudget in selectedBudgetsList) {
                     val budgetSnap = snapshot.children.find { it.child("name").value == selectedBudget }
                     if (budgetSnap != null) {
@@ -169,8 +170,9 @@ class ExpensePage : AppCompatActivity() {
                     }
                 }
 
-                // Save expense as transaction under each selected budget
+                // If validation passes, save transactions and update capitals in the same Firebase call
                 for (selectedBudget in selectedBudgetsList) {
+                    // Save transaction
                     val transactionId = FirebaseDatabase.getInstance().getReference("transactions").child(selectedBudget).push().key ?: continue
                     val transactionData = mapOf(
                         "id" to transactionId,
@@ -178,15 +180,22 @@ class ExpensePage : AppCompatActivity() {
                         "amount" to amount,
                         "date" to date,
                         "category" to category,
-                        "type" to "Expense",  // important: mark as expense
+                        "type" to "Expense",
                         "notes" to notes,
                         "photoUri" to selectedImageUri?.toString()
                     )
                     FirebaseDatabase.getInstance().getReference("transactions").child(selectedBudget).child(transactionId)
                         .setValue(transactionData)
+
+                    // Update capital immediately in the same Firebase call
+                    val budgetSnap = snapshot.children.find { it.child("name").value == selectedBudget }
+                    if (budgetSnap != null) {
+                        val capital = budgetSnap.child("capital").getValue(Double::class.java) ?: 0.0
+                        val newCapital = capital - amount
+                        budgetSnap.ref.child("capital").setValue(newCapital)
+                    }
                 }
 
-                updateBudgetsCapital(selectedBudgetsList, amount)
                 Toast.makeText(this@ExpensePage, "Expense saved!", Toast.LENGTH_SHORT).show()
             }
 
@@ -195,6 +204,8 @@ class ExpensePage : AppCompatActivity() {
             }
         })
     }
+
+// Remove the separate updateBudgetsCapital method since it's now integrated above
 
 
     private fun updateBudgetsCapital(selectedBudgetsList: List<String>, amount: Double) {

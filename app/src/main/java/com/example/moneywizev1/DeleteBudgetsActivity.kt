@@ -63,17 +63,28 @@ class DeleteBudgetsActivity : AppCompatActivity() {
     }
 
     private fun deleteBudget(budgetId: String, position: Int) {
-        database.child(budgetId).removeValue()
-            .addOnSuccessListener {
-                budgetNames.removeAt(position)
-                budgetIds.removeAt(position)
-                adapter.notifyDataSetChanged()
-                Toast.makeText(this, "Budget deleted successfully!", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Failed to delete budget.", Toast.LENGTH_SHORT).show()
+        val budgetsRef = FirebaseDatabase.getInstance().getReference("budgets")
+        val transactionsRef = FirebaseDatabase.getInstance().getReference("transactions")
+        val budgetName = budgetNames[position] // Get name based on list position
+
+        // 1. Delete transactions node with the same name as the budget
+        transactionsRef.child(budgetName).removeValue()
+            .addOnCompleteListener {
+                // 2. After deleting transactions, delete the budget itself
+                budgetsRef.child(budgetId).removeValue()
+                    .addOnSuccessListener {
+                        budgetNames.removeAt(position)
+                        budgetIds.removeAt(position)
+                        adapter.notifyDataSetChanged()
+                        Toast.makeText(this@DeleteBudgetsActivity, "Budget and its transactions deleted!", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this@DeleteBudgetsActivity, "Failed to delete budget.", Toast.LENGTH_SHORT).show()
+                    }
             }
     }
+
+
 }
 
 
