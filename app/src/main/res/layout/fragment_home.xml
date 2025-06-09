@@ -15,7 +15,22 @@
         android:backgroundTint="#F9A826"
         android:text="Select Date Range"
         android:textColor="#1C2541" />
-
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF9800"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spending Graph"
+        android:textColor="#FF9800"
+        android:textSize="24sp"
+        android:textStyle="bold" />
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/bar_chart"
         android:layout_width="377dp"
