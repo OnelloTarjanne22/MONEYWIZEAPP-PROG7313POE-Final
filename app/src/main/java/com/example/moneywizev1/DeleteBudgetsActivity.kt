@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+// Adapted from code by Etcetera (2022)
 
 class DeleteBudgetsActivity : AppCompatActivity() {
 
@@ -72,10 +73,9 @@ class DeleteBudgetsActivity : AppCompatActivity() {
         val transactionsRef = FirebaseDatabase.getInstance().getReference("transactions")
         val budgetName = budgetNames[position] // Get name based on list position
 
-        // 1. Delete transactions node with the same name as the budget
+        // 1. Delete transactions with the budget they belong to
         transactionsRef.child(budgetName).removeValue()
             .addOnCompleteListener {
-                // 2. After deleting transactions, delete the budget itself
                 budgetsRef.child(budgetId).removeValue()
                     .addOnSuccessListener {
                         budgetNames.removeAt(position)

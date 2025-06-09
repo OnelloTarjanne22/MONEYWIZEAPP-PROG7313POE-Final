@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import java.util.*
-
+// Adapted from code by Rehan Ali (2022)
 class ExpensePage : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
@@ -27,7 +27,7 @@ class ExpensePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense_page)
 
-        // Firebase refs
+
         database = FirebaseDatabase.getInstance()
         budgetsRef = database.getReference("budgets")
         expensesRef = database.getReference("expenses")
@@ -43,7 +43,7 @@ class ExpensePage : AppCompatActivity() {
         val notesField = findViewById<EditText>(R.id.editTextText5)
         multiSelectBudgetTextView = findViewById(R.id.multiSelectBudget)
 
-        // Load budgets
+
         loadBudgets()
 
         multiSelectBudgetTextView.setOnClickListener {
@@ -170,9 +170,8 @@ class ExpensePage : AppCompatActivity() {
                     }
                 }
 
-                // If validation passes, save transactions and update capitals in the same Firebase call
+                // If validation passes, save transactions and update capitals
                 for (selectedBudget in selectedBudgetsList) {
-                    // Save transaction
                     val transactionId = FirebaseDatabase.getInstance().getReference("transactions").child(selectedBudget).push().key ?: continue
                     val transactionData = mapOf(
                         "id" to transactionId,
@@ -205,7 +204,6 @@ class ExpensePage : AppCompatActivity() {
         })
     }
 
-// Remove the separate updateBudgetsCapital method since it's now integrated above
 
 
     private fun updateBudgetsCapital(selectedBudgetsList: List<String>, amount: Double) {

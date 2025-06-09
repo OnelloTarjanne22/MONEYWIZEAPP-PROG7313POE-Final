@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+// Adapted from code by Rehan Ali (2022)
 
 class signup : AppCompatActivity() {
 
@@ -20,9 +21,8 @@ class signup : AppCompatActivity() {
         val confirmPasswordField = findViewById<EditText>(R.id.editTextSignupConfirmPassword)
         val signupButton = findViewById<Button>(R.id.btnCreateAccount)
 
-        // Initialize Firebase reference
         database = FirebaseDatabase.getInstance().getReference("users")
-
+           // to sign up the user using a pseudo type sign in
         signupButton.setOnClickListener {
             val email = emailField.text.toString().trim()
             val password = passwordField.text.toString().trim()
@@ -41,7 +41,6 @@ class signup : AppCompatActivity() {
     }
 
     private fun registerUser(email: String, password: String) {
-        // Optional: Check if the email already exists
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var exists = false

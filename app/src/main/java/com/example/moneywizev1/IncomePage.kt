@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import java.util.*
-
+// Adapted from code by Rehan Ali (2022)
 class IncomePage : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
@@ -27,7 +27,6 @@ class IncomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_page)
 
-        // Firebase setup
         database = FirebaseDatabase.getInstance()
         budgetsRef = database.getReference("budgets")
         transactionsRef = database.getReference("transactions")
@@ -49,7 +48,6 @@ class IncomePage : AppCompatActivity() {
             showMultiSelectDialog()
         }
 
-        // Set up current date
         val calendar = Calendar.getInstance()
         val currentDate = "%04d-%02d-%02d".format(
             calendar.get(Calendar.YEAR),
@@ -153,9 +151,8 @@ class IncomePage : AppCompatActivity() {
     ) {
         budgetsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                // Save transaction and update capital for each selected budget in single Firebase call
+                // Save transaction and update capital for each selected budget
                 for (selectedBudget in selectedBudgetsList) {
-                    // Save transaction
                     val transactionId = transactionsRef.child(selectedBudget).push().key ?: continue
 
                     val transactionData = mapOf(
@@ -171,7 +168,6 @@ class IncomePage : AppCompatActivity() {
 
                     transactionsRef.child(selectedBudget).child(transactionId).setValue(transactionData)
 
-                    // Update capital immediately in the same Firebase call
                     val budgetSnap = snapshot.children.find { it.child("name").value == selectedBudget }
                     if (budgetSnap != null) {
                         val capital = budgetSnap.child("capital").getValue(Double::class.java) ?: 0.0

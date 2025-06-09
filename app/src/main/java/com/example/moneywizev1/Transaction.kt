@@ -1,7 +1,7 @@
 package com.example.moneywizev1
 
 data class Transaction(
-    val type: String = "",         // Type of transaction: income/expense
+    val type: String = "",
     val name: String = "",
     val amount: Double = 0.0,
     val date: String = "",

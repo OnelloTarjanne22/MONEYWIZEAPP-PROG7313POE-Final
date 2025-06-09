@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
-
+// Adapted from code by Etcetera (2022)
 class Budget : AppCompatActivity() {
 
     private lateinit var nameInput: EditText
@@ -34,7 +34,7 @@ class Budget : AppCompatActivity() {
         dateInput = findViewById(R.id.editTextDate2)
         confirmButton = findViewById(R.id.button)
 
-        // Date Picker dialog for dateInput
+        // Date Picker  dateInput
         dateInput.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)

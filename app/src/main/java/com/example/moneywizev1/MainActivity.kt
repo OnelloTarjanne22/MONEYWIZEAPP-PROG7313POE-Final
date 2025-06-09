@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+// Adapted from code by Etcetera (2022)
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val loginButton = findViewById<Button>(R.id.btnlogin)
         val signupButton = findViewById<Button>(R.id.btnsignup)
 
-        // Initialize Firebase reference
         database = FirebaseDatabase.getInstance().getReference("users")
 
         loginButton.setOnClickListener {

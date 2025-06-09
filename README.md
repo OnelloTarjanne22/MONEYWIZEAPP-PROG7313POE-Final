@@ -26,7 +26,7 @@ Liyema Mangcu ST10143385
 ![Screenshot 2025-05-02 224148](https://github.com/user-attachments/assets/b390c46b-6180-4311-b426-5df9f33f7073)
 
 # Demo videos
-Mobile demo video link: https://youtu.be/ERzf7AyGSoM?si=hpTmiwVU3cNQKfEH
+Mobile demo video link:https://youtu.be/3nebjUbOyIU
 
 # App Features 🧨  :
 ### Transaction Search 🔍
@@ -61,6 +61,6 @@ kmshack (2018). Konfetti. [online] Android UI OpenSource. Available at: https://
 Shahi, S. (2023). How to create bottom navigation in Android using Kotlin- Beginners Guide. [online] Medium. Available at: https://medium.com/@shahisofiya575/how-to-create-bottom-navigation-in-android-using-material-design-9de844c484a [Accessed 10 Apr 2025].<br>
 CodingZest (2022). How to Insert Data in Firebase Realtime Database Kotlin | Firebase Realtime Database Tutorial Kotlin. [online] www.youtube.com. Available at: https://www.youtube.com/watch?v=miJooBq9iwE [Accessed 21 May. 2024].<br>
 Etcetera (2022). Firebase Realtime Database | Crash Course | Android Tutorial # 1. [online] YouTube. Available at: https://www.youtube.com/watch?v=Eg2aGWblQvk&list=PLjnZx7KD6m-ySasHtRKIX-04VuOYmGBmr [Accessed 29 May. 2025].<br>
-Rehan Ali (2022). How to Retrieve Data from the Firebase Realtime Database | Read and Write Data on Android. [online] YouTube. Available at: https://www.youtube.com/watch?v=kDnn3VX-atY [Accessed 9 Jun. 2025].<br>
+Rehan Ali (2022). How to Retrieve Data from the Firebase Realtime Database | Read and Write Data on Android. [online] YouTube. Available at: https://www.youtube.com/watch?v=kDnn3VX-atY [Accessed 3 Jun. 2025].<br>
 
 

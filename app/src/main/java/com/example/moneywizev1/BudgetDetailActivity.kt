@@ -21,6 +21,7 @@ import androidx.core.content.FileProvider
 import java.io.File
 
 class BudgetDetailActivity : AppCompatActivity() {
+// Adapted from code by Rehan Ali (2022) and  Etcetera (2022)
 
     private var currentCount = 0
     private var goal = 0
@@ -218,7 +219,7 @@ class BudgetDetailActivity : AppCompatActivity() {
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
     }
-
+// Max spend alert
     private fun showExpenseLimitExceededPopup() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_expense_limit_exceeded, null)
         val lottieAnimationView = dialogView.findViewById<LottieAnimationView>(R.id.lottieAnimationView)
