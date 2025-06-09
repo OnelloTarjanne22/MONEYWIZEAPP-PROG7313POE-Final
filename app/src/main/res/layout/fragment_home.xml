@@ -5,20 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#1C2541">
 
     <Button
         android:id="@+id/btn_select_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Date Range" />
+        android:backgroundTint="#F9A826"
+        android:text="Select Date Range"
+        android:textColor="#1C2541" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/bar_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp" />
+        android:layout_width="377dp"
+        android:layout_height="658dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1" />
 
 </LinearLayout>
 

@@ -4,14 +4,28 @@
     android:layout_height="match_parent"
     android:background="#e9ecef">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1C2541">
+
+
+        <nl.dionsegijn.konfetti.xml.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+
     <Button
         android:id="@+id/button7"
         android:layout_width="68dp"
         android:layout_height="46dp"
         android:layout_gravity="top|start"
         android:layout_margin="16dp"
-        android:backgroundTint="#353030"
+        android:backgroundTint="#F9A826"
         android:text="Back"
+        android:textColor="#1C2541"
         android:textSize="8sp" />
 
     <LinearLayout
@@ -27,18 +41,19 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Budget Details"
+            android:textColor="#FFFEFE"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Min Spend Goal Label -->
         <TextView
             android:id="@+id/tvMinGoalLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Minimum Spend Goal"
+            android:textColor="#FFFEFE"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp" />
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/progressBarMinGoal"
@@ -47,17 +62,18 @@
             android:layout_height="20dp"
             android:max="100"
             android:progress="0"
-            android:progressTint="#4CAF50" />
+            android:progressTint="#F46133" />
 
-        <!-- Max Spend Limit Label -->
+
         <TextView
             android:id="@+id/tvMaxLimitLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Maximum Spend Limit"
+            android:textColor="#FFFEFE"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/progressBarMaxSpend"
@@ -66,9 +82,9 @@
             android:layout_height="20dp"
             android:max="100"
             android:progress="0"
-            android:progressTint="#FF5722" />
+            android:progressTint="#EB1708" />
 
-        <!-- Overall Progress Label -->
+
         <TextView
             android:id="@+id/tvProgress"
             android:layout_width="wrap_content"
@@ -76,10 +92,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="Overall Progress"
+            android:textColor="#FFFEFE"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Existing progress bar in RelativeLayout with markers -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -101,6 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="0% Complete"
+            android:textColor="#FFFEFE"
             android:textSize="16sp" />
 
         <TextView
@@ -108,30 +126,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Spend Limit: "
+            android:textColor="#FFFEFE"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvTransactionsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transactions"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:text="Transactions"
+            android:textColor="#FFFEFE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/transactionsListView"
             android:layout_width="255dp"
             android:layout_height="195dp"
+            android:background="#187386C5"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp"
             android:padding="8dp" />
+        <Button
+            android:id="@+id/btnDownloadBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Download Budget Report"
+            android:backgroundTint="#F9A826"
+            android:textColor="#1C2541"
+            android:layout_marginTop="16dp" />
+
+
     </LinearLayout>
 
-    <nl.dionsegijn.konfetti.xml.KonfettiView
-        android:id="@+id/konfettiView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </FrameLayout>
+
 

@@ -1,7 +1,9 @@
 package com.example.moneywizev1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -19,10 +21,14 @@ class DeleteBudgetsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delete_budgets)
+        val backButton = findViewById<Button>(R.id.backbuttonincome2)
 
         listView = findViewById(R.id.listViewBudgets)
         database = FirebaseDatabase.getInstance().getReference("budgets")
-
+        backButton.setOnClickListener {
+            startActivity(Intent(this, MainAct2::class.java))
+            finish()
+        }
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, budgetNames)
         listView.adapter = adapter
 
@@ -39,7 +45,6 @@ class DeleteBudgetsActivity : AppCompatActivity() {
                 .show()
         }
     }
-
     private fun loadBudgets() {
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

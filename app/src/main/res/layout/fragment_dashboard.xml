@@ -5,12 +5,13 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e9ecef">
+    android:background="#1C2541">
 
     <ListView
         android:id="@+id/budgetListView"
         android:layout_width="269dp"
         android:layout_height="566dp"
+        android:background="#A77386C5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,16 +23,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#343a40"
+        app:backgroundTint="#F9A826"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865"
+        app:layout_constraintVertical_bias="0.909"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
         app:srcCompat="@android:drawable/ic_input_add"
-        app:tint="#FFFFFF" />
+        app:tint="#1C2541" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

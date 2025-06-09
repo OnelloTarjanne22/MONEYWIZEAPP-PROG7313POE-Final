@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e9ecef"
+    android:background="#1C2541"
     tools:context=".addFragment">
 
 
@@ -14,8 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:backgroundTint="#353030"
+        android:backgroundTint="#F9A826"
         android:text="Add Income"
+        android:textColor="#1C2541"
         app:layout_constraintBottom_toTopOf="@+id/btnExp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
@@ -26,8 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="340dp"
-        android:backgroundTint="#353030"
+        android:backgroundTint="#F9A826"
         android:text="Add Expense"
+        android:textColor="#1C2541"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:text="ADD PAGE"
+        android:textColor="#FFFEFE"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -53,7 +53,6 @@ class HomeFragment : Fragment() {
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val startStr = sdf.format(startDate)
         val endStr = sdf.format(endDate)
-
         loadTotalSpentPerBudget(startStr, endStr) { budgetData ->
             val entries = mutableListOf<BarEntry>()
             val labels = mutableListOf<String>()
@@ -66,8 +65,8 @@ class HomeFragment : Fragment() {
             }
 
             val dataSet = BarDataSet(entries, "Total Spent per Budget").apply {
-                color = Color.rgb(33, 150, 243) // Blue color
-                valueTextColor = Color.BLACK
+                color = Color.parseColor("#F9A826")
+                valueTextColor = Color.WHITE
                 valueTextSize = 12f
             }
 
@@ -80,13 +79,19 @@ class HomeFragment : Fragment() {
                 granularity = 1f
                 setDrawGridLines(false)
                 labelRotationAngle = -45f
+                textColor = Color.WHITE
+            }
+            chart.axisLeft.apply {
+                axisMinimum = 0f
+                textColor = Color.WHITE
             }
 
-            chart.axisLeft.axisMinimum = 0f
             chart.axisRight.isEnabled = false
             chart.description.isEnabled = false
             chart.legend.isEnabled = true
+            chart.legend.textColor = Color.WHITE
             chart.invalidate()
+
             if (budgetData.isNotEmpty()) {
                 val top = budgetData.maxByOrNull { it.value }
                 top?.let {

@@ -5,15 +5,31 @@
     android:id="@+id/ba"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e9ecef"
+    android:background="#1C2541"
     android:padding="16dp"
     tools:context=".DeleteBudgetsActivity">
+
+    <Button
+        android:id="@+id/backbuttonincome2"
+        android:layout_width="68dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#F9A826"
+        android:text="Back"
+        android:textColor="#1C2541"
+        android:textColorLink="#1C2541"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
 
     <ListView
         android:id="@+id/listViewBudgets"
         android:layout_width="349dp"
         android:layout_height="388dp"
-        android:background="#e9ecef"
+        android:background="#A77386C5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete Budget"
+        android:textColor="#FFFEFE"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

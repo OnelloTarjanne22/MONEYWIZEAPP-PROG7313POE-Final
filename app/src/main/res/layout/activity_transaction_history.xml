@@ -3,7 +3,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e9ecef"
+    android:background="#1C2541"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -12,28 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:hint="Start Date (YYYY-MM-DD)" />
+        android:hint="Start Date (YYYY-MM-DD)"
+        android:textColor="#FFFEFE"
+        android:textColorHint="#FFFEFE" />
 
     <EditText
         android:id="@+id/endDateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:hint="End Date (YYYY-MM-DD)" />
+        android:hint="End Date (YYYY-MM-DD)"
+        android:textColor="#FFFEFE"
+        android:textColorHint="#FFFEFE" />
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F9A826"
         android:text="Search Transactions"
-        android:backgroundTint="#353030"
-        />
+        android:textColor="#1C2541" />
 
     <ListView
         android:id="@+id/transactionListView"
         android:layout_width="match_parent"
         android:layout_height="526dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#187386C5" />
 
     <TextView
         android:id="@+id/categorySummaryTextView"
@@ -42,6 +47,7 @@
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:text="Category Summary"
+        android:textColor="#FFFEFE"
         android:textSize="16sp"
         android:textStyle="bold" />
 

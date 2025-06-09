@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="MoneyWizeV1.app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-06-07T20:13:28.266634900Z">
+        <DropdownSelection timestamp="2025-06-09T11:20:06.090477900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\travi\.android\avd\Pixel_9_API_35.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=SCSO99BQNVPNJR5T" />
             </handle>
           </Target>
         </DropdownSelection>
